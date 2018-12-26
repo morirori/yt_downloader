@@ -9,15 +9,13 @@ from bs4 import BeautifulSoup
 def move_data_from_dir_to_dir(src, dest):
     all_files = os.listdir(src)
     files_to_copy = list(filter(lambda file: True if file.find(".mp3") != -1 else False, all_files))
-    if not os.path.exists(dest):
-        os.mkdir(dest)
+    if not os.path.exists(dest): os.mkdir(dest)
     for file in files_to_copy:
         shutil.move(src + "\\" + file, dest)
 
 
 def create_filepath(dest):
-    if not os.path.exists(dest):
-        os.mkdir(dest)
+    if not os.path.exists(dest): os.mkdir(dest)
 
 
 def wait_until_file_start_download(src, idx):
@@ -58,7 +56,6 @@ def create_web_driver(project_file_path):
 
 def check_if_filed_is_already_downloaded(path, title):
     all_files = os.listdir(path)
-    title = title
     return True if title in all_files else False
 
 
@@ -86,5 +83,4 @@ def get_song_title(driver):
 
 
 def copy_xls_file(xls_file):
-    if not os.path.exists(xls_file):
-        shutil.copyfile("./links.xlsx", xls_file)
+    if not os.path.exists(xls_file): shutil.copyfile("./links.xlsx", xls_file)
